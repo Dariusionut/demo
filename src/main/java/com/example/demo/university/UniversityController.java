@@ -27,4 +27,9 @@ public class UniversityController {
         universityService.addNewUniversity(university);
     }
 
+    @DeleteMapping(path = "{universityId}")
+    public void deleteUniversity(@PathVariable("universityId") Long universityId){
+        universityService.deleteUniversity(universityId);
+    }
+
 }

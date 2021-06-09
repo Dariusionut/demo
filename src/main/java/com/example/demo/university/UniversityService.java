@@ -27,4 +27,12 @@ public class UniversityService {
         }
         universityRepository.save(university);
     }
+
+    public void deleteUniversity(Long universityId) {
+        boolean exists = universityRepository.existsById(universityId);
+        if(!exists){
+            throw new IllegalStateException("University with id " + universityId + " does not exist!");
+        }
+        universityRepository.deleteById(universityId);
+    }
 }
