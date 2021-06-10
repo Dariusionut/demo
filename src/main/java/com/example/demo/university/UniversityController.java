@@ -18,18 +18,29 @@ public class UniversityController {
     }
 
     @GetMapping
-    public List<University> getUniversity(){
-      return universityService.getUniversities();
+    public List<University> getUniversity() {
+        return universityService.getUniversities();
     }
 
     @PostMapping
-    public void registerNewUniversity(@RequestBody University university){
+    public void registerNewUniversity(@RequestBody University university) {
         universityService.addNewUniversity(university);
     }
 
     @DeleteMapping(path = "{universityId}")
-    public void deleteUniversity(@PathVariable("universityId") Long universityId){
+    public void deleteUniversity(
+            @PathVariable("universityId") Long universityId) {
         universityService.deleteUniversity(universityId);
+    }
+
+    @PutMapping(path = "{universityId}")
+    public void updateUniversity(
+            @PathVariable("universityId") Long universityId,
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String country,
+            @RequestParam(required = false) String city
+    ) {
+        universityService.updateUniversity(universityId, name, country, city);
     }
 
 }
